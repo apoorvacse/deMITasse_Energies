@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 40 18% 96%;
+    --bg-surface: 0 0% 100%;
+    --bg-dark: 60 7% 5%;
+    --ink: 60 7% 5%;
+    --ink-muted: 0 0% 42%;
+    --ink-faint: 47 3% 72%;
+    --accent: 153 61% 26%;
+    --accent-pale: 153 33% 93%;
+    --rule: 40 8% 87%;
+
+    --background: var(--bg);
+    --foreground: var(--ink);
+    --card: var(--bg-surface);
+    --card-foreground: var(--ink);
+    --popover: var(--bg-surface);
+    --popover-foreground: var(--ink);
+    --primary: var(--accent);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--bg-surface);
+    --secondary-foreground: var(--ink);
+    --muted: var(--bg);
+    --muted-foreground: var(--ink-muted);
+    --accent-color: var(--accent);
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: var(--rule);
+    --input: var(--rule);
+    --ring: var(--accent);
+    --radius: 0px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+  }
+}
+
+/* Nav link underline animation */
+.nav-link {
+  @apply relative;
+}
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-[1px] origin-left scale-x-0 transition-transform duration-200;
+  background-color: hsl(var(--ink));
+}
+.nav-link:hover::after {
+  @apply scale-x-100;
+}
